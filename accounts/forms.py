@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account
+from .models import Account, UserProfile
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
@@ -23,6 +23,8 @@ class RegistrationForm(forms.ModelForm):
             self.fields[field].widget.attrs['class']='form-control'        #this one to apply to all the fields so that 'form-control' class styling will get apply to all fields in html
 
 
+
+
     def clean(self):
         cleaned_data = super(RegistrationForm,self).clean()                 # calls the clean method of RegistrationForm parent
         password = cleaned_data.get('password')
@@ -32,3 +34,25 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError(
                 "Password Does Not Match"
             )
+
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['first_name', 'last_name', 'phone_number']
+
+    def __init__(self,*args,**kwrgs):
+        super(UserForm,self).__init__(*args,**kwrgs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control'
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['address', 'city', 'country', 'profile_pic']
+
+    def __init__(self,*args,**kwrgs):
+        super(UserProfileForm,self).__init__(*args,**kwrgs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control'
