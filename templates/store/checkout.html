@@ -55,9 +55,9 @@
       </div>
 
   </div>
-</div> <!-- card.// -->
+</div>
 
-	</aside> <!-- col.// -->
+	</aside>
 	<aside class="col-lg-6">
 
 		<div class="card">
@@ -96,27 +96,45 @@
           <div class="price-wrap">
             <var class="price">${{cart_item.sub_total}}</var>
             <small  class="text-muted"> ${{cart_item.product.price}} each </small>
-          </div> <!-- price-wrap .// -->
+          </div>
         </td>
 
       </tr>
       {% endfor %}
       </tbody>
       </table>
-      <button type="submit" class="btn btn-primary btn-block" name="submit">Place Order</button>
-			<a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a>
-		</div> <!-- card-body.// -->
-		</div> <!-- card.// -->
+      <button type="submit" class="btn btn-primary btn-block" id="add1" name="submit">Place Order</button>
+			<a href="{% url 'store' %}" class="btn btn-light btn-block"  id="add">Continue Shopping</a>
+		</div>
+		</div>
   </form>
 
-</aside> <!-- col.// -->
+</aside>
 
 
-</div> <!-- row.// -->
+</div>
 
-<!-- ============================ COMPONENT 1 END .// ================================= -->
 
-</div> <!-- container .//  -->
+
+</div>
+
+<style>
+
+	#add {
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+  }
+
+	#add1{
+			background-color:#1db0dd;
+			box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+			transform: translateY(-2px);
+	}
+
+.card {
+    box-shadow: 4px 4px 15px rgba(0, 150, 255, 0.3); /* Adds a slight blue glow */
+}
+</style>
 </section>
 
 {% endblock %}

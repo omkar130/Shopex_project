@@ -6,16 +6,16 @@
 <section class="section-content padding-y bg">
 <div class="container">
 
-<!-- ============================ COMPONENT 1 ================================= -->
+
 <div class="card">
 	<div class="row no-gutters">
 		<aside class="col-md-6">
 <article class="gallery-wrap">
 	<div class="img-big-wrap">
 	   <a href="#"><img src="{{single_product.images.url}}"></a>
-	</div> <!-- img-big-wrap.// -->
+	</div>
 
-</article> <!-- gallery-wrap .end// -->
+</article>
 		</aside>
 		<main class="col-md-6 border-left">
 
@@ -43,55 +43,58 @@
 		  {% endfor %}
 		</select>
 		</div>
-	</div> <!-- row.// -->
+	</div>
 	<hr>
 	{% if single_product.stock <= 0 %}
 	<h5 class="text-danger">Out Of Stock</h5>
 	{% else %}
-	<button type="submit"  class="btn  btn-primary"> <span class="text">Add to Cart</span> <i class="fas fa-shopping-cart"></i>  </button>
+	<button type="submit"  id="add" class="btn  btn-dark add"> <span class="text">Add to Cart</span> <i class="fas fa-shopping-cart"></i>  </button>
 	{% endif %}
-</article> <!-- product-info-aside .// -->
+</article>
 	</form>
-		</main> <!-- col.// -->
-	</div> <!-- row.// -->
-</div> <!-- card.// -->
-<!-- ============================ COMPONENT 1 END .// ================================= -->
+		</main>
+	</div>
+</div>
+
 
 <br>
 
-<div class="row">
-			<div class="col-md-9">
+</div>
 
-	<header class="section-heading">
-		<h3>Customer Reviews </h3>
+<style>
 
-	</header>
+	.img-big-wrap img {
+	  transform: scale(1.05);
+	  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
 
-	<article class="box mb-3">
-		<div class="icontext w-100">
-			<img src="./images/avatars/avatar1.jpg" class="img-xs icon rounded-circle">
-			<div class="text">
-				<span class="date text-muted float-md-right">24.04.2020 </span>
-				<h6 class="mb-1">Mike John </h6>
+	#add {
+	  position: relative;
+	  overflow: hidden;
+	  padding: 10px 30px;
+	  border-radius: 5px;
+	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+	  background-color: #1db0dd;
+	}
 
-			</div>
-		</div> <!-- icontext.// -->
-		<div class="mt-3">
-			<p>
-				Dummy comment Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip
-			</p>
-		</div>
-	</article>
+	#add:hover {
+	  transform: scale(1.1);
+	  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+	}
 
+	#add i {
+	  transition: transform 0.3s ease;
+	}
 
+	#add:hover i {
+	  transform: translateX(5px);
+	}
 
-	</div> <!-- col.// -->
-</div> <!-- row.// -->
+</style>
 
-
-</div> <!-- container .//  -->
 </section>
+
 
 {% endblock %}

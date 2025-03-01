@@ -29,7 +29,7 @@
 <tbody>
   {% for order in orders %}
   <tr>
-    <th scope="row">{{order.order_number}}</th>
+    <th scope="row"><a id="add1" href="{% url 'order_detail' order.order_number%}">{{order.order_number}}</a></th>
     <td>{{order.first_name}} {{order.last_name}}</td>
     <td>{{order.phone}}</td>
     <td>{{order.order_total}}</td>
@@ -48,6 +48,15 @@
 </div> <!-- row.// -->
 </div>
 
+<style>
+#add1{
+		color:#1db0dd;
+}
+
+.card {
+	box-shadow: 4px 4px 15px rgba(0, 150, 255, 0.3); /* Adds a slight blue glow */
+}
+</style>
 
 </section>
 

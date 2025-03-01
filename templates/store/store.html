@@ -11,7 +11,7 @@
   {% else %}
 <h2 class="title-page">Our Store</h2>
 {% endif %}
-</div> <!-- container //  -->
+</div>
 </section>
 
 <section class="section-content padding-y">
@@ -24,8 +24,8 @@
 <article class="filter-group">
   <header class="card-header">
     <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
-      <i class="icon-control fa fa-chevron-down"></i>
-      <h6 class="title">Categories</h6>
+      <i class="icon-control fa fa-chevron-down" style="color:black"></i>
+      <h6 class="title" style="color:black">Categories</h6>
     </a>
   </header>
   <div class="filter-content collapse show" id="collapse_1" style="">
@@ -38,86 +38,12 @@
       {% endfor %}
       </ul>
 
-    </div> <!-- card-body.// -->
+    </div>
   </div>
-</article> <!-- filter-group  .// -->
-<article class="filter-group">
-  <header class="card-header">
-    <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
-      <i class="icon-control fa fa-chevron-down"></i>
-      <h6 class="title">Sizes </h6>
-    </a>
-  </header>
-  <div class="filter-content collapse show" id="collapse_4" style="">
-    <div class="card-body">
-      <label class="checkbox-btn">
-        <input type="checkbox">
-        <span class="btn btn-light"> XS </span>
-      </label>
+</article>
+</div>
 
-      <label class="checkbox-btn">
-        <input type="checkbox">
-        <span class="btn btn-light"> SM </span>
-      </label>
-
-      <label class="checkbox-btn">
-        <input type="checkbox">
-        <span class="btn btn-light"> LG </span>
-      </label>
-
-      <label class="checkbox-btn">
-        <input type="checkbox">
-        <span class="btn btn-light"> XXL </span>
-      </label>
-  </div><!-- card-body.// -->
-  </div>
-</article> <!-- filter-group .// -->
-
-<article class="filter-group">
-  <header class="card-header">
-    <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
-      <i class="icon-control fa fa-chevron-down"></i>
-      <h6 class="title">Price range </h6>
-    </a>
-  </header>
-  <div class="filter-content collapse show" id="collapse_3" style="">
-    <div class="card-body">
-
-      <div class="form-row">
-      <div class="form-group col-md-6">
-        <label>Min</label>
-        <!-- <input class="form-control" placeholder="$0" type="number"> -->
-          <select class="mr-2 form-control">
-          <option value="0">$0</option>
-          <option value="50">$50</option>
-          <option value="100">$100</option>
-          <option value="150">$150</option>
-          <option value="200">$200</option>
-          <option value="500">$500</option>
-          <option value="1000">$1000</option>
-        </select>
-      </div>
-      <div class="form-group text-right col-md-6">
-        <label>Max</label>
-          <select class="mr-2 form-control">
-          <option value="50">$50</option>
-          <option value="100">$100</option>
-          <option value="150">$150</option>
-          <option value="200">$200</option>
-          <option value="500">$500</option>
-          <option value="1000">$1000</option>
-          <option value="2000">$2000+</option>
-        </select>
-      </div>
-      </div> <!-- form-row.// -->
-      <button class="btn btn-block btn-primary">Apply</button>
-    </div><!-- card-body.// -->
-  </div>
-</article> <!-- filter-group .// -->
-
-</div> <!-- card.// -->
-
-</aside> <!-- col.// -->
+</aside>
 <main class="col-md-9">
 
 <header class="border-bottom mb-4 pb-3">
@@ -125,7 +51,7 @@
     <span class="mr-md-auto"><b>{{product_count}} items found</b> </span>
 
   </div>
-</header><!-- sect-heading -->
+</header>
 
 <div class="row">
   {% if products %}
@@ -136,31 +62,61 @@
 
     <a href="{{product.get_url}}"><img src="{{product.images.url}}"></a>
 
-    </div> <!-- img-wrap.// -->
+    </div>
     <figcaption class="info-wrap">
       <div class="fix-height">
         <a href="{{product.get_url}}" class="title">{{product.product_name}}</a>
         <div class="price-wrap mt-2">
           <span class="price">${{product.price}}</span>
-        </div> <!-- price-wrap.// -->
+        </div>
       </div>
-      <a href="{{ product.get_url }}" class="btn btn-block btn-primary">View Details</a>
+      <a href="{{ product.get_url }}"  id="add" class="btn btn-block btn-dark">View Details</a>
     </figcaption>
   </figure>
-</div> <!-- col.// -->
+</div>
 {% endfor %}
 {% else %}
 <div class="">
   <h2>No Result Found. Please try aagin</h2>
 </div>
 {% endif %}
-</div> <!-- row end.// -->
+</div>
 
-</main> <!-- col.// -->
+</main>
 
 </div>
 
-</div> <!-- container .//  -->
+</div>
 </section>
+
+<style>
+    .card-product-grid {
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background: white;
+        transform-style: preserve-3d;
+    }
+    .card-product-grid:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .img-wrap img {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card-product-grid:hover .img-wrap img {
+        transform: scale(1.1);
+    }
+
+    #add{
+      background-color:#1db0dd;
+    }
+
+    .card {
+        box-shadow: 4px 4px 15px rgba(0, 150, 255, 0.3); /* Adds a slight blue glow */
+    }
+
+</style>
 
 {% endblock %}

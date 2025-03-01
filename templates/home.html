@@ -4,50 +4,84 @@
 
 {% block content %}
 
-<!-- ========================= SECTION MAIN ========================= -->
+
 <section class="section-intro padding-y-sm">
 <div class="container">
 
-<div class="intro-banner-wrap">
-	<img src="{% static 'images/shopex_images/sale.jpg'%}"  style="width:1180px;height:450px" class="img-fluid rounded">
+
+	<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	        <img src="{% static 'images/shopex_images/sale.jpg'%}"  style="width:1180px;height:450px" class="d-block w-100" alt="...">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="{% static 'images/shopex_images/men28.jpg'%}"  style="width:1180px;height:450px" class="d-block w-100" alt="...">
+				<div class="carousel-caption text-right animated bounceInLeft delay-1s">
+					<h1 style="color:black; background: white; padding: 10px 20px; display: inline-block; border-radius: 8px; opacity: 0.8;">
+				 Best offers on Men's Blazzers
+		 </h1>
+        </div>
+			</div>
+	  </div>
+	</div>
+
 </div>
-
-</div> <!-- container //  -->
 </section>
-<!-- ========================= SECTION MAIN END// ========================= -->
 
-<!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
 <div class="container">
 
 <header class="section-heading">
-	<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
+	<a href="{% url 'store' %}" class="btn btn-outline-dark float-right">See all</a>
 	<h3 class="section-title">Popular products</h3>
-</header><!-- sect-heading -->
+</header>
 
 
 <div class="row">
 {% for product in products %}
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="{{product.get_url}}" class="img-wrap"> <img src="{{product.images.url}}"> </a>
-			<figcaption class="info-wrap">
-				<a href="{{product.get_url}}" class="title">{{product.product_name}}</a>
-				<div class="price mt-1"> ${{product.price}}</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div>
-	{% endfor %}
-
+    {% if forloop.counter <= 6 %}
+    <div class="col-md-4">
+        <div class="card card-product-grid">
+            <a href="{{product.get_url}}" class="img-wrap"> <img src="{{product.images.url}}"> </a>
+            <figcaption class="info-wrap">
+                <a href="{{product.get_url}}" class="title">{{product.product_name}}</a>
+                <div class="price mt-1"> ${{product.price}}</div>
+            </figcaption>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
 </div>
+
 
 </div>
 </section>
+<script>
+    $('.carousel').carousel({
+        interval:2500,
+    });
+</script>
 
+<style>
+    .card-product-grid {
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background: white;
+        transform-style: preserve-3d;
+    }
+    .card-product-grid:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .img-wrap img {
+        transition: transform 0.3s ease-in-out;
+    }
 
-
-
-
+    .card-product-grid:hover .img-wrap img {
+        transform: scale(1.1);
+    }
+</style>
 
 
 </body>
